@@ -2,13 +2,29 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# 🤖 AI Paragraph Generator
 
-This contains everything you need to run your app locally.
+A beautiful web application that uses Google's Gemini AI to generate well-structured paragraphs from user prompts.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1YE0uE5wWuAqfy2PHuqLu338QRw5rRe_Q
+## 🚀 Live Demo
 
-## Run Locally
+**[Try it live!](https://paragraphgenerator-js0engosi-akash-patels-projects-b63c002d.vercel.app)**
+
+## ✨ Features
+
+- 🎨 Modern, responsive UI with dark theme
+- ⚡ Fast paragraph generation using Google Gemini AI
+- 📱 Mobile-friendly design
+- 🎯 Simple and intuitive interface
+
+## 🛠️ Tech Stack
+
+- **React** + **TypeScript** - Modern frontend framework
+- **Vite** - Fast build tool
+- **Tailwind CSS** - Styling
+- **Google Gemini AI** - AI paragraph generation
+
+## 📦 Run Locally
 
 **Prerequisites:**  Node.js
 
