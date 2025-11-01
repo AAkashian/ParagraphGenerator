@@ -1,0 +1,5 @@
+{
+  "name": "AI Paragraph Generator",
+  "description": "Generate well-structured paragraphs from your prompts using the power of Gemini. Simply enter a topic or a sentence, and let the AI craft a coherent paragraph for you.",
+  "requestFramePermissions": []
+}
