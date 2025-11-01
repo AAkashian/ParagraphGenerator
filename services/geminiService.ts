@@ -1,28 +1,40 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
+// Initialize AI client lazily to avoid errors on module load
+let ai: GoogleGenAI | null = null;
 
-if (!API_KEY) {
-  throw new Error("API_KEY environment variable not set. Please check your .env.local file and ensure GEMINI_API_KEY is set correctly.");
-}
+const getAI = (): GoogleGenAI => {
+  const API_KEY = process.env.API_KEY;
 
-// Validate API key format (Gemini keys start with "AIza")
-if (!API_KEY.startsWith("AIza")) {
-  throw new Error("Invalid API key format. Gemini API keys should start with 'AIza'. Please verify your API key from https://aistudio.google.com/apikey");
-}
+  if (!API_KEY) {
+    throw new Error("API_KEY environment variable not set. Please check your Vercel environment variables and ensure GEMINI_API_KEY is set correctly.");
+  }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+  // Validate API key format (Gemini keys start with "AIza")
+  if (!API_KEY.startsWith("AIza")) {
+    throw new Error("Invalid API key format. Gemini API keys should start with 'AIza'. Please verify your API key from https://aistudio.google.com/apikey");
+  }
+
+  if (!ai) {
+    ai = new GoogleGenAI({ apiKey: API_KEY });
+  }
+
+  return ai;
+};
 
 export const generateParagraph = async (prompt: string): Promise<string> => {
   if (!prompt) {
     throw new Error("Prompt cannot be empty.");
   }
 
+  // Initialize AI client only when needed
+  const aiClient = getAI();
+
   try {
     const fullPrompt = `Create a well-structured and coherent paragraph based on the following prompt:\n\n"${prompt}"`;
     
-    const response = await ai.models.generateContent({
+    const response = await aiClient.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: fullPrompt,
     });
